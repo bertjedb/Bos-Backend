@@ -4,17 +4,18 @@ from UserApi import UserApi
 from MediaApi import MediaApi
 from FollowerApi import FollowerApi
 from ProjectApi import ProjectApi
+from EventApi import EventApi
 import os
 from flask import Flask, render_template, request, redirect, jsonify
-#from pymongo import MongoClient
 
-#client = MongoClient('localhost', 27017)
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 userApi = UserApi()
 mediaApi = MediaApi()
 followerApi = FollowerApi()
+projectApi = ProjectApi()
+eventApi = EventApi()
 
 
 @app.route('/', defaults={'path': ''})
@@ -92,7 +93,7 @@ def storeChatMessages():
     messageObject = request.args.get('messageObject')
     owner = request.args.get('owner')
     user = request.args.get('user')
-    ChatApi.storeChatMessages(owner,user, messageObject)
+    ChatApi.storeChatMessages(owner, user, messageObject)
 
 
 @app.route('/getChatMessages', methods=["GET"])
@@ -104,53 +105,88 @@ def getChatMessages():
 
 @app.route('/storeMedia', methods=['POST'])
 def storeMedia():
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": mediaApi.storeMedia(data.get('project'), data.get('name'), data.get('media'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": mediaApi.storeMedia(data.get('project'), data.get('name'), data.get('media'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
 
 @app.route('/removeMedia', methods=['POST'])
 def removeMedia():
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": mediaApi.removeMedia(data.get('id'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": mediaApi.removeMedia(data.get('id'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
 
 @app.route('/addFollower', methods=['POST'])
 def addFollower():
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": followerApi.addFollower(data.get('project'), data.get('user'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": followerApi.addFollower(data.get('project'), data.get('user'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
 
 @app.route('/removeFollower', methods=['POST'])
 def removeFollower():
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": followerApi.removeFollower(data.get('id'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": followerApi.removeFollower(data.get('id'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
 
 @app.route('/getFollowersForProject', methods=['POST'])
 def getFollowersForProject():
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": followerApi.getFollowersForProject(data.get('project'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": followerApi.getFollowersForProject(data.get('project'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
+
+@app.route('/addProject', methods=['POST'])
+def addProject():
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": projectApi.addProject(data.get('title'), data.get('description'),
+                                                          data.get('thumbnail'), data.get('creator'),
+                                                          data.get('beginDate'), data.get('endDate'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
+
+@app.route('/addEvent', methods=['POST'])
+def addEvent():
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": eventApi.addEvent(data.get('title'), data.get('description'), data.get('project'),
+                                                      data.get('beginDate'), data.get('endDate'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
+
 
 @app.route('/addLike', methods=['POST'])
 def addLike():
     id = request.args.get('id')
-    ProjectApi.addLike(id)
+    return ProjectApi.addLike(id)
+
 
 @app.route('/removeLike', methods=['POST'])
 def removeLike():
     id = request.args.get('id')
-    ProjectApi.removeLike(id)
+    return ProjectApi.removeLike(id)
+
 
 @app.route('/totalLikes', methods=['POST'])
 def totalLikes():
     id = request.args.get('id')
     return ProjectApi.totalLikes(id)
+
+
+@app.route('/getAllProjects', methods=['POST'])
+def getAllProjects():
+    result = ProjectApi.getAllProjects()
+    if len(result) > 0:
+        return jsonify({"responseCode": 200, "projects": result})
+    return jsonify({"responseCode": 400, "projects": {}})
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

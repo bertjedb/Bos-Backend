@@ -1,7 +1,6 @@
 import sqlalchemy as sqla
 from sqlalchemy.orm import sessionmaker, scoped_session
 from Database import User, Media, Follower, Project, Connection
-
 tableName = 'bos-db'
 userName = 'root'
 password = ''
@@ -11,6 +10,7 @@ Session = scoped_session(sessionmaker(bind=conn))
 
 
 class Persister:
+
     def __init__(self):
         print("creating perister")
 
@@ -37,7 +37,7 @@ class Persister:
         db.close()
         return True
 
-    # gets a user object by id, returns user object or False
+    #gets a user object by id, returns user object or False
     def getUserById(self, id):
         db = Session()
         user = db.query(User).filter(User.id == id).first()
@@ -46,7 +46,15 @@ class Persister:
             return user
         return False
 
-    # gets a user object by email, returns user object or False
+    def checkUserExists(self, id):
+        db = Session()
+        user = db.query(User).filter(User.id == id).first()
+        db.close()
+        if user is not None:
+            return True
+        return False
+
+    #gets a user object by email, returns user object or False
     def getUserByEmail(self, email):
         db = Session()
         user = db.query(User).filter(User.email == email.lower()).first()
@@ -55,7 +63,7 @@ class Persister:
             return user
         return False
 
-    # sets a user's authenticated field in db on True to indicate that the user is logged in
+    #sets a user's authenticated field in db on True to indicate that the user is logged in
     def setAuthenticated(self, email):
         db = Session()
         try:
@@ -80,7 +88,7 @@ class Persister:
         db.close()
         return True
 
-    def getMediaById(self, id):
+    def getMediaById(self,id):
         db = Session()
         media = db.query(Media).filter(Media.id == id).first()
         db.close()
@@ -88,7 +96,7 @@ class Persister:
             return media
         return False
 
-    def getFollowerById(self, id):
+    def getFollowerById(self,id):
         db = Session()
         follower = db.query(Follower).filter(Follower.id == id).first()
         db.close()
@@ -96,7 +104,7 @@ class Persister:
             return follower
         return False
 
-    def getProjectById(self, id):
+    def getProjectById(self,id):
         db = Session()
         project = db.query(Project).filter(Project.id == id).first()
         db.close()
@@ -109,8 +117,8 @@ class Persister:
         follower = db.query(Follower).filter(Follower.user == user).filter(Follower.project == project).first()
         db.close()
         if follower is not None:
-            return False
-        return True
+            return True
+        return False
 
     def getFollowerByContext(self, user, project):
         db = Session()
@@ -128,32 +136,69 @@ class Persister:
             return followers
         return False
 
+    def checkProjectExists(self, id):
+        db = Session()
+        project = db.query(Project).filter(Project.id == id).first()
+        db.close()
+        if project is not None:
+            return True
+        return False
+
+    def getAllEvents(self):
+        db = Session()
+        events = db.query(Event).all()
+        db.close()
+        return events
+
+
     def getChatId(owner, user):
         db = Session()
-        chatId = db.query(Connection.id).filter(owner == Connection.owner).filter(user == Connection.user).first()
-        return chatId
-        db.commit()
-        db.close()
+        if(db.query(Connection.id).filter(owner == Connection.owner).filter(user == Connection.user).count()):
+            chatId = db.query(Connection.id).filter(owner == Connection.owner).filter(user == Connection.user).first()
+            db.commit()
+            db.close()
+            return chatId
+        else:
+            return False
 
-    def addLike(self,id):
+    def addLike(self, id):
         db = Session()
-        like = db.query(Project.likes).filter(Project.id == id).first()
-        like += 1
-        db.commit()
-        db.close()
-
+        try:
+            like = db.query(Project.likes).filter(Project.id == id).first()
+            like += 1
+            db.commit()
+            db.close()
+            return True
+        except:
+            db.close()
+            return False
 
     def removeLike(self, id):
         db = Session()
         like = db.query(Project.likes).filter(Project.id == id).first()
-        like -= 1
-        db.commit()
-        db.close()
-
+        if (like <= 0):
+            db.close()
+            return False
+        else:
+            like -= 1
+            db.commit()
+            db.close()
 
     def totalLikes(self, id):
         db = Session()
         like = db.query(Project.likes).filter(Project.id == id).first()
-        return like
         db.commit()
         db.close()
+        return like
+
+    def getAllProjects(self):
+        db = Session()
+        if db.query(Project).count():
+            events = db.query(Project).order_by(Project.beginDate).all()
+            db.close()
+            return events
+        else:
+            return {}
+
+
+
