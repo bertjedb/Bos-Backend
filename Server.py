@@ -7,6 +7,7 @@ from ProjectApi import ProjectApi
 from EventApi import EventApi
 import os
 from flask import Flask, render_template, request, redirect, jsonify
+import json
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -121,11 +122,12 @@ def removeMedia():
 
 @app.route('/addFollower', methods=['POST'])
 def addFollower():
+    data = request.get_json()
+    if data != None:
+        return jsonify(
+            {"response": followerApi.addFollower(data.get('project'), data.get('user'), data.get('deviceId'))})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
-	data = request.get_json()
-	if data != None:
-		return jsonify({"response": followerApi.addFollower(data.get('project'), data.get('user'), data.get('deviceId'))})
-	return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
 @app.route('/removeFollower', methods=['POST'])
 def removeFollower():
@@ -150,6 +152,7 @@ def pushFollowers():
         return jsonify({"response": followerApi.pushFollowers(data.get('project'))})
     return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
+
 @app.route('/addProject', methods=['POST'])
 def addProject():
     data = request.get_json()
@@ -171,20 +174,23 @@ def addEvent():
 
 @app.route('/addLike', methods=['POST'])
 def addLike():
-    id = request.args.get('id')
-    return projectApi.addLike(id)
+    data = request.get_json()
+    projectId = data.get('projectId')
+    userId = data.get('userId')
+
+    return jsonify({"response": projectApi.addLike(projectId, userId)})
 
 
 @app.route('/removeLike', methods=['POST'])
 def removeLike():
     id = request.args.get('id')
-    return projectApi.removeLike(id)
+    return jsonify({"response": projectApi.removeLike(id)})
 
 
 @app.route('/totalLikes', methods=['POST'])
 def totalLikes():
     id = request.args.get('id')
-    return projectApi.totalLikes(id)
+    return jsonify({"response": projectApi.totalLikes(id)})
 
 
 @app.route('/getAllProjects', methods=['POST'])
