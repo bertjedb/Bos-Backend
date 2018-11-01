@@ -73,6 +73,18 @@ class NecessitiesRequest(Base):
 	description = sqla.Column('description', sqla.VARCHAR(1000))
 	necessity = sqla.Column('necessity', sqla.VARCHAR(500))
 	createdAt = sqla.Column('createdAt',sqla.DATETIME)
+	offered = sqla.Column('offered', sqla.Boolean)
+	picture = sqla.Column('picture', sqla.VARCHAR(500))
+
+class Challenge(Base):
+	__tablename__ = 'Challenge'
+	id = sqla.Column('id', sqla.Integer, primary_key=True, autoincrement=True, unique=True)
+	owner = sqla.Column('owner',sqla.Integer,sqla.ForeignKey('User.id'))
+	title = sqla.Column('title', sqla.VARCHAR(100))
+	description = sqla.Column('description', sqla.VARCHAR(10000))
+	deadLine = sqla.Column('deadLine', sqla.DATETIME)
+	createdAt = sqla.Column('createdAt',sqla.DATETIME)
+	contactInfo = sqla.Column('contactInfo', sqla.VARCHAR(64))
 
 
 

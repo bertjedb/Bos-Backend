@@ -1,6 +1,6 @@
 import sqlalchemy as sqla
 from sqlalchemy.orm import sessionmaker, scoped_session
-from Database import User, Media, Follower, Project, Connection, NecessitiesRequest
+from Database import User, Media, Follower, Project, Connection, NecessitiesRequest, Challenge
 tableName = 'bos-db'
 userName = 'root'
 password = ''
@@ -27,7 +27,6 @@ class Persister:
 
 	def deleteObject(self, object):
 		db = Session()
-		print(object)
 		try:
 			db.delete(object)
 			db.commit()
@@ -149,6 +148,12 @@ class Persister:
 		events = db.query(Event).all()
 		db.close()
 		return events
+
+	def getAllChallenges(self):
+		db = Session()
+		challenges = db.query(Challenge).all()
+		db.close()
+		return challenges
 
 	def getChatId(self,owner, user):
 		db = Session()

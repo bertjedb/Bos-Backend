@@ -18,18 +18,14 @@ class ProjectApi():
 
 	def addProject(self, title, description, thumbnail, creator, beginDate, endDate):
 		if persister.checkUserExists(creator):
-			path = "C:/Users/Jelmer/Bos-Backend/thumbnails/"
-			mediaPath = path + title + "Base64.txt"
-			mediaFile = open(mediaPath, "w+")
-			mediaFile.write(thumbnail)
-			mediaFile.close()
+			thumbnail = "http://gromdroid.nl/bslim/wp-content/uploads/2018/10/hoi-131.jpg"
 	
 			currentDate = datetime.datetime.now()
 	
 			projectObject = Project ( 
 										title=title,
 								  		description=description,
-								  		thumbnail=mediaPath,
+								  		thumbnail=thumbnail,
 								  		creator=creator,
 								  		beginDate=beginDate,
 								  		endDate=endDate,
