@@ -1,6 +1,6 @@
 import sqlalchemy as sqla
 from sqlalchemy.orm import sessionmaker, scoped_session
-from Database import User, Media, Follower, Project, Connection, Event, Like
+from Database import User, Media, Follower, Project, Connection, Event, Like, NecessitiesRequest
 
 tableName = 'bos-db'
 userName = 'root'
@@ -203,3 +203,21 @@ class Persister:
             return events
         else:
             return {}
+
+
+    def getAllRequests(self):
+        db = Session()
+        if db.query(Project).count():
+            requests = db.query(NecessitiesRequest).order_by(NecessitiesRequest.createdAt).all()
+            db.close()
+            return requests
+        else:
+            return {}
+
+    def getRequestById(self, id):
+        db = Session()
+        request = db.query(NecessitiesRequest).filter(NecessitiesRequest.id == id).first()
+        db.close()
+        if request is not None:
+            return request
+        return False

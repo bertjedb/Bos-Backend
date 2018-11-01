@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7887d630-45e5-4721-84d4-770358895f53" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NecessitiesRequestApi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Persister.py" beforeDir="false" afterPath="$PROJECT_DIR$/Persister.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectApi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Server.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
+            <state relative-caret-position="337">
+              <caret line="213" column="21" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -53,13 +52,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Persister.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Persister.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Persister.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="170" column="30" lean-forward="true" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
+            <state relative-caret-position="504">
+              <caret line="175" column="30" lean-forward="true" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <marker date="1541085782201" expanded="true" signature="531:533" ph="..." />
               </folding>
             </state>
           </provider>
@@ -84,8 +84,8 @@
       <list>
         <option value="$PROJECT_DIR$/Database.py" />
         <option value="$PROJECT_DIR$/ProjectApi.py" />
-        <option value="$PROJECT_DIR$/Server.py" />
         <option value="$PROJECT_DIR$/Persister.py" />
+        <option value="$PROJECT_DIR$/Server.py" />
       </list>
     </option>
   </component>
@@ -220,12 +220,12 @@
       <workItem from="1541003586267" duration="754000" />
       <workItem from="1541015144645" duration="5286000" />
       <workItem from="1541025380662" duration="2786000" />
-      <workItem from="1541063019914" duration="7879000" />
+      <workItem from="1541063019914" duration="8502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16705000" />
+    <option name="totallyTimeSpent" value="17328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -294,6 +294,7 @@
           <caret line="196" column="34" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <marker date="1541085782201" expanded="true" signature="531:533" ph="..." />
           </folding>
         </state>
       </provider>
@@ -334,6 +335,7 @@
           <caret line="196" column="34" lean-forward="true" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <marker date="1541085782201" expanded="true" signature="531:533" ph="..." />
           </folding>
         </state>
       </provider>
@@ -388,22 +390,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server.py">
+    <entry file="file://$PROJECT_DIR$/Persister.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
+        <state relative-caret-position="504">
+          <caret line="175" column="30" lean-forward="true" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
+            <marker date="1541085782201" expanded="true" signature="531:533" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Persister.py">
+    <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="170" column="30" lean-forward="true" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
+        <state relative-caret-position="337">
+          <caret line="213" column="21" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="21" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
