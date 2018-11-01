@@ -1,6 +1,7 @@
 import sqlalchemy as sqla
 from sqlalchemy.orm import sessionmaker, scoped_session
-from Database import User, Media, Follower, Project, Connection, NecessitiesRequest, Challenge
+from Database import User, Media, Follower, Project, Connection, Event, Like, NecessitiesRequest, Challenge
+
 tableName = 'bos-db'
 userName = 'root'
 password = ''
@@ -10,7 +11,6 @@ Session = scoped_session(sessionmaker(bind=conn))
 
 
 class Persister:
-
 	def __init__(self):
 		print("creating perister")
 
@@ -167,9 +167,10 @@ class Persister:
 
 	def addLike(self, id):
 		db = Session()
+		print(id)
 		try:
-			like = db.query(Project.likes).filter(Project.id == id).first()
-			like += 1
+			project = db.query(Project).filter(Project.id == id).first()
+			project.likes += 1
 			db.commit()
 			db.close()
 			return True
@@ -187,6 +188,7 @@ class Persister:
 			like -= 1
 			db.commit()
 			db.close()
+			return True
 	
 	def totalLikes(self, id):
 		db = Session()
@@ -219,6 +221,4 @@ class Persister:
 		db.close()
 		if request is not None:
 			return request
-		return False
-
-
+		return False    
