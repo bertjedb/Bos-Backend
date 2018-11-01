@@ -10,7 +10,6 @@ persister = Persister()
 
 
 class ProjectApi():
-
     def __init__(self):
         print("creating projectApi")
 

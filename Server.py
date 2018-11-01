@@ -6,6 +6,7 @@ from FollowerApi import FollowerApi
 from ProjectApi import ProjectApi
 from EventApi import EventApi
 from NecessitiesRequestApi import NecessitiesRequestApi
+from ChallengeApi import ChallengeApi
 import os
 from flask import Flask, render_template, request, redirect, jsonify
 import json
@@ -19,6 +20,7 @@ followerApi = FollowerApi()
 projectApi = ProjectApi()
 eventApi = EventApi()
 necessitiesRequestApi = NecessitiesRequestApi()
+challengeApi = ChallengeApi()
 
 
 @app.route('/', defaults={'path': ''})
@@ -206,8 +208,7 @@ def getAllProjects():
 def makeRequest():
     data = request.get_json()
     if data != None:
-        return jsonify({"response": necessitiesRequestApi.makeRequest(data.get('owner'), data.get('title'),
-                                                                      data.get('description'), data.get('necessity'))})
+        return jsonify({"response": necessitiesRequestApi.makeRequest(data.get('owner'), data.get('title'), data.get('description'), data.get('necessity'), data.get('offered'), data.get('picture'))})
     return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
 
@@ -226,6 +227,12 @@ def getAllRequests():
         return jsonify({"response": necessitiesRequestApi.getAllRequests()})
     return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
+@app.route('/getAllChallenges', methods=['POST'])
+def getAllChallenges():
+    data = request.get_json()
+    if data != None:
+        return jsonify({"response": challengeApi.getAllChallenges()})
+    return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
