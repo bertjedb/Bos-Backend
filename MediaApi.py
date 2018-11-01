@@ -13,12 +13,7 @@ class MediaApi():
 		return persister.getMediaById(id) #User object
 
 	def storeMedia(self, project, name, media):
-		path = "C:/Users/Jelmer/Bos-Backend/media/"
-		mediaPath = path + name + "Base64.txt"
-		mediaFile = open(mediaPath, "w+")
-		mediaFile.write(media)
-		mediaFile.close()
-
+		media = "http://gromdroid.nl/bslim/wp-content/uploads/2018/10/hoi-131.jpg"
 		mediaObject = Media ( 
 								project=project,
 							  	name=name,
