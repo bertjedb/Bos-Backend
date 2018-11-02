@@ -59,9 +59,10 @@ class ProjectApi():
         result = []
         if len(projects) != 0:
             for item in projects:
+                creatorUser = persister.getUserById(item.creator)
                 result.append(
                     {"id": item.id, "title": item.title, "desc": item.description, "thumbnail": item.thumbnail,
                      "creator": item.creator,
                      "beginDate": item.beginDate, "endDate": item.endDate, "createdAt": item.createdAt,
-                     "likes": item.likes})
+                     "likes": item.likes, "creatorName": creatorUser.name, "creatorProfilePhoto": creatorUser.profilePhoto})
         return result

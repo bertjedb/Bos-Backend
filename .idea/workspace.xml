@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7887d630-45e5-4721-84d4-770358895f53" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ChallengeApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MediaApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/MediaApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NecessitiesRequestApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/NecessitiesRequestApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persister.py" beforeDir="false" afterPath="$PROJECT_DIR$/Persister.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/MezelfBlob.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profilephoto's/Jelmer HaarmanPhoto.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profilephoto's/John DoePhoto.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbnails/Battle of the schoolsBase64.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,8 +41,8 @@
       <file leaf-file-name="ProjectApi.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProjectApi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
-              <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+            <state relative-caret-position="354">
+              <caret line="66" column="122" selection-start-line="66" selection-start-column="122" selection-end-line="66" selection-end-column="122" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -89,10 +79,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ProjectApi.py" />
         <option value="$PROJECT_DIR$/Server.py" />
         <option value="$PROJECT_DIR$/Persister.py" />
         <option value="$PROJECT_DIR$/Database.py" />
+        <option value="$PROJECT_DIR$/ProjectApi.py" />
       </list>
     </option>
   </component>
@@ -227,12 +217,12 @@
       <workItem from="1541003586267" duration="754000" />
       <workItem from="1541015144645" duration="5286000" />
       <workItem from="1541025380662" duration="2786000" />
-      <workItem from="1541063019914" duration="10761000" />
+      <workItem from="1541063019914" duration="11446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19587000" />
+    <option name="totallyTimeSpent" value="20272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -407,8 +397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectApi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        <state relative-caret-position="354">
+          <caret line="66" column="122" selection-start-line="66" selection-start-column="122" selection-end-line="66" selection-end-column="122" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>

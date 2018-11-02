@@ -28,8 +28,8 @@ class User(Base):
 class Project(Base):
     __tablename__ = 'Project'
     id = sqla.Column('id', sqla.Integer, primary_key=True, autoincrement=True, unique=True)
-    title = sqla.Column('title', sqla.VARCHAR(64))
-    description = sqla.Column('description', sqla.VARCHAR(1000))
+    title = sqla.Column('title', sqla.VARCHAR(100))
+    description = sqla.Column('description', sqla.VARCHAR(3000))
     thumbnail = sqla.Column('thumbnail', sqla.VARCHAR(500))
     creator = sqla.Column('creator', sqla.Integer, sqla.ForeignKey('User.id'))
     beginDate = sqla.Column('beginDate', sqla.DATETIME)
