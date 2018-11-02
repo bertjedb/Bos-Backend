@@ -53,13 +53,10 @@ class UserApi():
 					return {"succes": persister.setAuthenticated(email), "userId": user.id} #True or False depening on succes
 		return False #1 or more necessary fields were empty or user did not exist
 
-	def logoutUser(self, email):
-		arrayOfData = [email]
-		if self.checkData(arrayOfData):
-			user = self.getUserByEmail(email)
-			if user != False:
-				return persister.setNotAuthenticated(email) #True or False depening on succes
-		return False #email field was empty or user did not exist
+	def logoutUser(self, id):
+		user = self.getUserById(id)
+		if user != False:
+			return persister.setNotAuthenticated(user.email) #True or False depening on succes
 
 	def checkData(self, arrayOfData):
 		for data in arrayOfData:	#check array of data to make sure no None values or empty strings are send, works only if all variables in array are strings
