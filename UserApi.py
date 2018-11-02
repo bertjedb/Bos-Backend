@@ -44,11 +44,13 @@ class UserApi():
 	def loginUser(self, email, password):
 		arrayOfData = [email, password]
 		if self.checkData(arrayOfData):
+			print("here")
 			sendPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+			print(sendPassword)
 			user = self.getUserByEmail(email)
 			if user != False:
 				if sendPassword == user.password:
-					return persister.setAuthenticated(email) #True or False depening on succes
+					return {"succes": persister.setAuthenticated(email), "userId": user.id} #True or False depening on succes
 		return False #1 or more necessary fields were empty or user did not exist
 
 	def logoutUser(self, email):

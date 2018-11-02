@@ -17,9 +17,14 @@ class Persister:
 	def storeObject(self, object):
 		db = Session()
 		try:
+			print("here")
 			db.add(object)
+			print("here2")
+			print(object)
 			db.commit()
+			print("here3")
 		except:
+			print("error")
 			db.close()
 			return False
 		db.close()
