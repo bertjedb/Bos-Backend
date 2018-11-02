@@ -23,6 +23,7 @@ class FollowerApi():
 		if not persister.getProjectById(project) == False and not persister.getUserById(user) == False:
 			if not persister.checkFollowerExists(user, project):
 				followerObject = Follower( user=user, project=project, deviceId=deviceId)
+				print(user, project, deviceId)
 				return persister.storeObject(followerObject)
 		return False
 
