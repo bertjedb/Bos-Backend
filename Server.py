@@ -89,7 +89,7 @@ def loginUser():
 def logoutUser():
     data = request.get_json()
     if data != None:
-        return jsonify({"response": userApi.logoutUser(data.get('email'))})
+        return jsonify({"response": userApi.logoutUser(data.get('id'))})
     return jsonify({"response": False, "msg": "Please make sure to send json data"})
 
 
